@@ -463,7 +463,7 @@ function bindPageInput(wrap, pageId) {
     e.preventDefault();
     const v = state.views.get(pageId);
     attachCanvas(v, pageId);
-    wrap.setPointerCapture(e.pointerId);
+    try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
     const [x, y] = pagePoint(wrap, e);
     if (prefs.tool === 'eraser') {
       state.drawing = { pointerId: e.pointerId, pageId, view: v, erase: true, removed: [], last: [x, y] };
