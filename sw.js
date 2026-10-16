@@ -1,5 +1,5 @@
 // App shell cache. Bump VERSION on every deploy.
-const VERSION = 'skynotes-v1';
+const VERSION = 'skynotes-v2';
 const SHELL = ['./', 'index.html', 'style.css', 'app.js', 'sync.js', 'config.js', 'manifest.json', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -12,7 +12,7 @@ self.addEventListener('fetch', e => {
   const u = new URL(e.request.url);
   if (e.request.method !== 'GET' || u.origin !== location.origin) return;
   e.respondWith(
-    fetch(e.request).then(r => {
+    fetch(e.request.url, { cache: 'no-cache' }).then(r => {
       const copy = r.clone();
       caches.open(VERSION).then(c => c.put(e.request, copy));
       return r;
