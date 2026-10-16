@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SkyNotes">
+<meta name="theme-color" content="#f4f1ea">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+<title>SkyNotes</title>
+</head>
+<body>
+
+<!-- Library -->
+<section id="library" class="view">
+  <header class="bar">
+    <h1>SkyNotes</h1>
+    <div class="spacer"></div>
+    <span id="syncStatus" class="sync"></span>
+    <button id="btnSettings" class="tb" title="Settings">⚙︎</button>
+    <button id="btnNewNotebook" class="primary">+ New notebook</button>
+  </header>
+  <div id="notebookGrid" class="grid"></div>
+  <p id="emptyHint" class="hint">Tap “+ New notebook” to start.</p>
+</section>
+
+<!-- Editor -->
+<section id="editor" class="view hidden">
+  <header class="bar toolbar">
+    <button id="btnBack" class="tb" title="Library">‹ Library</button>
+    <span id="nbTitle" class="nbtitle"></span>
+    <div class="spacer"></div>
+    <div class="group" id="tools">
+      <button class="tb tool" data-tool="pen" title="Pen">✒︎</button>
+      <button class="tb tool" data-tool="highlighter" title="Highlighter">▮</button>
+      <button class="tb tool" data-tool="eraser" title="Eraser">⌫</button>
+      <button class="tb tool" data-tool="text" title="Text">T</button>
+    </div>
+    <div class="group" id="colors"></div>
+    <div class="group" id="sizes"></div>
+    <div class="group">
+      <button id="btnUndo" class="tb" title="Undo">↶</button>
+      <button id="btnRedo" class="tb" title="Redo">↷</button>
+    </div>
+    <div class="group">
+      <button id="btnAddPage" class="tb" title="Add page">+ Page</button>
+      <button id="btnPageMenu" class="tb" title="Page options">⋯</button>
+    </div>
+  </header>
+  <div id="pages" class="pages"></div>
+  <div id="pageIndicator" class="pageind"></div>
+</section>
+
+<!-- Menus / dialogs -->
+<div id="sheet" class="sheet hidden"><div class="sheet-body" id="sheetBody"></div></div>
+
+<script src="config.js"></script>
+<script src="sync.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
